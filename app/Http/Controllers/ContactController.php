@@ -14,7 +14,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = auth()->user()->contacts;
+        return view('contacts.index', compact('contacts'));
     }
 
     /**
@@ -41,6 +42,8 @@ class ContactController extends Controller
             'phone_number' => ['required', 'digits:9'],
         ]);
 
+        $data['user_id'] = auth()->id();
+
         Contact::create($data);
 
         return redirect()->route('home');
@@ -54,7 +57,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        return view('contacts.show', compact('contact'));
     }
 
     /**
@@ -94,6 +97,8 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+
+        return redirect()->route('home');
     }
 }

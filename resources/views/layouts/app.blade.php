@@ -30,7 +30,7 @@
             {{ config('app.name', 'Laravel') }}
           </a>
         @else
-          <a class="navbar-brand" href="{{ route('home')  }}">
+          <a class="navbar-brand" href="{{ route('home') }}">
             {{ config('app.name', 'Laravel') }}
           </a>
         @endguest
@@ -62,6 +62,9 @@
                 </li>
               @endif
             @else
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('contacts.index') }}">Contact List</a>
+              </li>
               <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                   data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
